@@ -1,0 +1,13 @@
+{
+  "name": "sixth-sense",
+  "displayName": "Sixth Sense",
+  "version": "1.0.0",
+  "description": "A fork of obra/superpowers built around explicit model and effort routing for every subagent, stack-aware conventions for Java, Angular, React, Next.js, and Python, and a two-pass edge-case reviewer (Dylan Dog) instead of a single review pass.",
+  "author": {
+    "name": "Dario Amato"
+  },
+  "homepage": "https://github.com/dariovr1/sixth-sense",
+  "repository": "https://github.com/dariovr1/sixth-sense",
+  "license": "MIT",
+  "keywords": ["skills", "tdd", "code-review", "debugging", "workflow", "subagents", "dylan-dog"]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "sixth-sense",
+  "description": "Marketplace for Sixth Sense, a fork of obra/superpowers that adds model/effort routing, stack-aware conventions, and a two-pass adversarial reviewer (Dylan Dog).",
+  "owner": {
+    "name": "Dario Amato"
+  },
+  "plugins": [
+    {
+      "name": "sixth-sense",
+      "displayName": "Sixth Sense",
+      "source": "./",
+      "description": "A fork of obra/superpowers built around explicit model and effort routing for every subagent, stack-aware conventions for Java, Angular, React, Next.js, and Python, and a two-pass edge-case reviewer (Dylan Dog) instead of a single review pass.",
+      "author": {
+        "name": "Dario Amato"
+      },
+      "homepage": "https://github.com/dariovr1/sixth-sense",
+      "repository": "https://github.com/dariovr1/sixth-sense",
+      "license": "MIT",
+      "category": "development",
+      "tags": ["skills", "tdd", "code-review", "debugging", "workflow", "subagents"]
+    }
+  ]
+}
