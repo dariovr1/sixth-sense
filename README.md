@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  A fork of <a href="https://github.com/obra/superpowers">obra/superpowers</a> built around explicit model and effort routing for every subagent, stack-aware conventions for Java, Angular, React, Next.js, and Python, and a two-pass edge-case reviewer (Dylan Dog) instead of a single review pass.<br>
+  Catches bugs before they ship, and blocked features before they're built: per-task model/effort routing, stack-aware TDD (Java, Angular, React/Next.js, Python), and a two-pass adversarial reviewer (Dylan Dog). A fork of <a href="https://github.com/obra/superpowers">obra/superpowers</a>.<br>
   Some conventions adapted from <a href="https://github.com/mattpocock/skills">mattpocock/skills</a> and <a href="https://github.com/DietrichGebert/ponytail">DietrichGebert/ponytail</a> (see Credits).
 </p>
 
