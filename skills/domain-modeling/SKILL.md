@@ -17,3 +17,4 @@ Use when the user wants to pin down domain terminology or a ubiquitous language,
 - If a term or concept is not in `CONTEXT.md`, add it. Create the file lazily if it does not exist.
 - Focus on the active discipline of changing the model, rather than just consuming/reading it.
 - For Spring Boot projects: use the project's package structure as a guide for bounded contexts.
+- Tag each recorded decision with a short ID (`D-01`, `D-02`, ...) in `CONTEXT.md`/ADRs, so it can be traced later against the code that implements it (see `dylan-dog`'s checklist, "Decision Coverage" section). This is a lightweight trace tag, not a blocking gate — a missing trace should surface as a warning downstream, never block a commit on its own.

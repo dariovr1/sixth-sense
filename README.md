@@ -9,9 +9,9 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.0-111111?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/badge/version-1.0.1-111111?style=flat-square" alt="Version">
   <img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT license">
-  <img src="https://img.shields.io/badge/skills-16-111111?style=flat-square" alt="16 skills">
+  <img src="https://img.shields.io/badge/skills-17-111111?style=flat-square" alt="17 skills">
   <img src="https://img.shields.io/badge/agents-8-111111?style=flat-square" alt="8 agent tiers">
   <img src="https://img.shields.io/github/stars/dariovr1/sixth-sense?style=flat-square&color=111111&label=stars" alt="Stars">
 </p>
@@ -121,7 +121,7 @@ This is a structural comparison, checked against `obra/superpowers` on 2026-07-1
 
 | | obra/superpowers | Sixth Sense |
 |---|---|---|
-| Skills | 14 | 16, plus 8 agent-tier definitions |
+| Skills | 14 | 17, plus 8 agent-tier definitions |
 | Core footprint (`SKILL.md` + agent tiers, measured) | about 125KB, about 31,300 tokens | about 70KB, about 17,600 tokens, roughly 44% smaller |
 | Net token savings on equivalent skills (itemized, `scripts/benchmark.js`, nets out Sixth Sense-only capabilities) | — | 23% net savings (measured 2026-07-21) |
 | Subagent model/effort routing | None. Everything runs on whatever model the session itself is using | 8 tiers: `sonnet-low/medium/high/research`, `haiku-batch`, `dylan-dog-triage/hunter`, `opus-review` |
@@ -222,6 +222,7 @@ Once it's installed:
 | `domain-modeling` | Building and maintaining the domain model |
 | `using-git-worktrees` | Isolated workspaces via git worktree |
 | `finishing-a-development-branch` | Branch completion: merge/PR/cleanup |
+| `prompt-craft` | Interview → polished portable prompt for an external tool/model (image-gen, another LLM), never for building here — adaptive question budget, not a fixed count |
 
 ### User-invoked (triggered with `/skill-name`)
 | Skill | Description |
@@ -301,7 +302,7 @@ Wrong plugin: that's [ponytail](https://github.com/DietrichGebert/ponytail). Thi
 No. It's a second opinion on a finished spec or review, on by default but only invoked from `requesting-code-review`/`grilling`, never for routine dispatch. Turn it off with `opus-review: false` in `.sixth-sense/model-preferences.md`.
 
 **Why does it stop adding skills instead of growing indefinitely?**
-Because every loaded skill costs tokens whether or not it fires. 8-12 well-chosen skills is the target this fork tries to stay near, and it's already a bit over that at 16, mostly because of `crossroad-stack` and the model/effort tiers Superpowers doesn't have. New additions get checked against real dispatch logs first, not added on "might be useful" alone, see `Skill Count` in `CLAUDE.md`.
+Because every loaded skill costs tokens whether or not it fires. 8-12 well-chosen skills is the target this fork tries to stay near, and it's already a bit over that at 17, mostly because of `crossroad-stack` and the model/effort tiers Superpowers doesn't have. New additions get checked against real dispatch logs first, not added on "might be useful" alone, see `Skill Count` in `CLAUDE.md`.
 
 ## Star History
 

@@ -40,6 +40,7 @@ Auto-detect project files and run appropriate dependency installation:
 - **Java/Gradle:** `build.gradle` / `build.gradle.kts` → `./gradlew build`
 - **Node.js:** `package.json` → `npm install`
 - **Python:** `requirements.txt` / `pyproject.toml` → `pip install -r requirements.txt` or `poetry install`
+- **Untracked project state:** if `.sixth-sense/` exists in the original working directory, copy it into the new worktree. It's untracked by design (per-project state, not shared history), so `git worktree add` does not bring it along on its own — skipping this silently resets `implementing-work`'s Heavy Workflow ledger (`.sixth-sense/progress.md`) to "fresh start" and loses track of which tasks are already done.
 
 ### Step 5: Verify Baseline
 Run the project's test suite to establish a clean baseline:

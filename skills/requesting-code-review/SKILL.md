@@ -81,3 +81,6 @@ When receiving code review feedback:
 
 ## GitHub Thread Replies
 When replying to inline review comments on GitHub, reply in the comment thread (`gh api repos/{owner}/{repo}/pulls/{pr}/comments/{id}/replies`), not as a top-level PR comment.
+
+## Learnings Ledger
+If Dylan Dog's review (or your own act-on-feedback pass) surfaces a non-obvious, reusable pattern, append it to `.sixth-sense/learnings.jsonl` at the project root the same way `diagnosing-bugs` does: `{"pattern": "...", "confidence": "...", "source_file": "...", "discovered_by": "requesting-code-review"}`, one JSON object per line, create the file if it doesn't exist.

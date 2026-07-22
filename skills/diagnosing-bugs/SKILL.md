@@ -9,6 +9,8 @@ description: Use when encountering bugs, test failures, or unexpected behavior �
 NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST.
 Complete the investigation before proposing or implementing any changes. Don't change production code until you've named the root cause out loud.
 
+Before phase 1, check `.sixth-sense/learnings.jsonl` at the project root for entries relevant to the code/files involved — a documented pitfall on this exact class of bug saves re-diagnosing it from scratch. Skip silently if the file doesn't exist.
+
 ## The Six-Phase Loop
 
 ### 1. Reproduce
@@ -44,3 +46,6 @@ Apply the correction — minimal, targeted, addressing root cause not symptoms.
 Verify the fix and ensure no existing functionality is broken.
 - Write a test that reproduces the original bug (red), apply the fix (green).
 - Run full test suite: `./gradlew test`.
+
+## Learnings Ledger
+When phase 3 (Hypothesise) or the fix itself surfaces a non-obvious, reusable pattern (a platform-specific gotcha, an external API quirk, a class of bug likely to recur in this codebase), append an entry to `.sixth-sense/learnings.jsonl` at the project root: `{"pattern": "...", "confidence": "...", "source_file": "...", "discovered_by": "diagnosing-bugs"}` (one JSON object per line, create the file if it doesn't exist). Skip this for one-off bugs with no reusable pattern — this is for pitfalls worth not rediscovering, not a log of every bug fixed.

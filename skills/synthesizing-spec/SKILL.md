@@ -17,10 +17,13 @@ Synthesize the current conversation into a structured specification. Use the pro
 [Outline the high-level shape of the fix, excluding low-level implementation details.]
 
 ### User Stories
-[Extensive, numbered list of concrete, independently checkable behaviors.]
+[Extensive, numbered list of concrete, independently checkable behaviors. Each story carries its own verification command — how `implementing-work`/`verification-before-completion` will prove it's done — not just the top-level Testing Decisions section below.]
 
 1. As a [actor], I want a [feature], so that [benefit].
+   - **Verification:** [exact command that proves this story works, e.g. a specific test name — or, for requirements that can't be automated (e.g. visual/UX judgment), an explicit blocking human checkpoint: "requires manual confirmation, not just green tests"]
 2. ...
+
+A story without a verification command is incomplete — don't leave it implicit or defer it to Testing Decisions.
 
 ### Implementation
 [Settled implementation decisions:]

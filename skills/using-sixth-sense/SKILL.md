@@ -4,7 +4,7 @@ description: Use when starting any conversation — establishes how to find and 
 disable-model-invocation: true
 ---
 
-**Sixth Sense v1.0.0** — this line must match `.claude-plugin/plugin.json`'s `version` field; `scripts/preflight.js` checks it. If you're reading this and it doesn't match what `claude plugin details sixth-sense@sixth-sense` reports, the running session hasn't picked up the latest plugin version yet — restart to apply.
+**Sixth Sense v1.0.1** — this line must match `.claude-plugin/plugin.json`'s `version` field; `scripts/preflight.js` checks it. If you're reading this and it doesn't match what `claude plugin details sixth-sense@sixth-sense` reports, the running session hasn't picked up the latest plugin version yet — restart to apply.
 
 <SUBAGENT-STOP>
 This applies to ANY agent, including `general-purpose` and other non-sixth-sense-tier agents — the SessionStart hook that injected this text fires for subagent contexts too, not just the top-level session with the user. "Was I dispatched as a subagent?" is not always obvious from the inside, so check concretely rather than guessing: you are almost certainly a subagent, not the top-level session, if your very first message is a specific bounded task assignment rather than an open-ended message from a user, and/or you have no prior conversation turns before this task, and/or you were told to execute something and report a result back.
@@ -38,7 +38,7 @@ If `.sixth-sense/model-preferences.md` does not exist in the current project, su
 - **The user signals a break**: "let's continue this later" / "I'll pick this up tomorrow" / "new session" or equivalent.
 
 ## When Ambiguous Requests Should Still Trigger a Core Skill
-These four are model-invoked precisely so they fire without being named. Don't wait for the user to say the skill's name:
+These are model-invoked precisely so they fire without being named. Don't wait for the user to say the skill's name:
 
 | Signal in the request | Invoke |
 |---|---|
@@ -47,6 +47,7 @@ These four are model-invoked precisely so they fire without being named. Don't w
 | "add", "implement", "build" a behavior — **large or ambiguous** (multiple viable approaches, unclear interfaces, or scope that isn't obviously one sitting) | `grilling` → `synthesizing-spec` first, then `test-driven-development` |
 | Work looks done — about to commit/merge, OR about to say "done" | `requesting-code-review` |
 | 2+ independent tasks with no shared state | `dispatching-parallel-agents` |
+| "write me a prompt for X" / "how do I phrase this for [tool]" — target is an external tool/model, not this session | `prompt-craft` |
 
 If a request is genuinely ambiguous between two of these, run the one that comes first in the natural order (diagnose before you build, design before you build, build with TDD before you review) rather than asking which one to use.
 

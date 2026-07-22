@@ -6,7 +6,7 @@ description: Use before applying test-driven-development, diagnosing-bugs, or re
 # Crossroad Stack — Router Frontend/Backend
 
 ## Detection Logic
-Before applying any engineering skill, identify the stack from the files involved:
+Before applying any engineering skill, identify the stack from the files involved. Where a task matches more than one section's trigger indicators (e.g. a Python project with a GUI import matches both Python Backend and Python Desktop/GUI), the more specific section wins — Python Desktop/GUI overrides Python Backend, not the other way around.
 
 ### Java / Spring Boot Backend
 Trigger indicators: `.java` files, `build.gradle`, `build.gradle.kts`, `src/main/java`, `application.yml`, `application.properties`, `pom.xml`.
@@ -34,6 +34,15 @@ Apply:
 - **Build/Typecheck**: `mypy .`
 - **Debugging**: python tracebacks, logging, pdb (skill `diagnosing-bugs`)
 - **Conventions**: PEP 8, type hints, virtual environments (venv/poetry)
+
+### Python Desktop/GUI
+Trigger indicators: same as Python Backend, plus a GUI framework import (`tkinter`, `PyQt`/`PySide`, `customtkinter`, `kivy`) or an OS-level GUI dependency (`pystray`, `pywin32` GUI calls, screen/overlay/window-capture APIs).
+
+Apply:
+- **Testing**: same as Python Backend (pytest/unittest), plus [references/python.md](../test-driven-development/references/python.md) — automated tests cover logic, not rendering.
+- **Human visual verification required before "done"**: automated tests passing does not prove the UI renders correctly (layout, DPI scaling, overlay positioning, tray icon behavior). Launch the app and visually confirm the change before marking the task complete — see `test-driven-development`'s "Before Calling a Cycle Done" checklist.
+- **Build/Typecheck**: `mypy .`, plus a packaged-build smoke test when the change touches packaging (PyInstaller hidden-imports for GUI backends are a known failure class — verify the built exe, not just `python main.py`).
+- **Debugging**: python tracebacks, logging, pdb (skill `diagnosing-bugs`) — plus DPI-awareness and screen-coordinate bugs are a known class on Windows, worth checking first.
 
 ### Mixed Task
 If a task spans multiple stacks, apply the relevant conventions to each file and layer independently.

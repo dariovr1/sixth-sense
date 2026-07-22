@@ -28,3 +28,9 @@ For every boolean condition or comparison: if I flip the operator, change `<` to
 
 ## Unnecessary Complexity
 A downstream safety net for the minimal-implementation ladder `test-driven-development` applies during GREEN (see `skills/test-driven-development/references/minimal-implementation.md`) — this category catches what slips through it. New code, a new abstraction, or a new dependency where the codebase already had a stdlib call, a native feature, or an existing utility that would have done the same job in fewer lines. Unlike the other categories, this is never Critical/Important on its own — no test fails, no bug ships — file it as Minor with the simpler alternative named concretely (not "this could be simpler," but "this is `x.map().filter().reduce()`, `Array.prototype.filter` alone does it").
+
+## Dependency Legitimacy
+Any dependency new to this diff (not already in the lockfile/manifest before this change) is untrusted by default: tag it `[ASSUMED]` and require an explicit human checkpoint before it's installed — package names can be hallucinated or planted by an attacker (slopsquatting). Without network access to verify age/download count/source repo, still degrade to tagging and checkpointing everything new rather than passing silently — fail-safe, never a silent pass.
+
+## Decision Coverage
+If the project has `CONTEXT.md`/ADRs with `D-NN` decision tags (see `domain-modeling`), grep the diff for whether decisions referenced by the touched code actually appear — flag (warning only, never a blocker) any `D-NN` tag in CONTEXT.md/ADRs that doesn't show up anywhere in the code or commit history it's supposed to govern. This is a non-blocking trace check, not a gate.

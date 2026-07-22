@@ -11,6 +11,8 @@ This is the general TDD loop. If you need stack-specific commands and convention
 - React/Next.js: [references/react.md](references/react.md)
 - Python: [references/python.md](references/python.md)
 
+Before starting, check `.sixth-sense/learnings.jsonl` at the project root for entries relevant to the files/area you're about to touch — a documented pitfall on this exact class of bug saves rediscovering it from scratch. Skip silently if the file doesn't exist.
+
 ---
 
 ## The Iron Law
@@ -50,5 +52,6 @@ Follow this exact loop for every behavior:
 - [ ] Did I actually see it fail, and for the right reason (not a typo)?
 - [ ] Did interface and behavior list get an explicit, real user reply — or, in a non-interactive session, an explicit stated declaration that the gate was skipped — not just silently narrated text, before the first test?
 - [ ] Does the behavior list include at least one edge/boundary case, not only the happy path?
+- [ ] If this task touches rendered/visual output (UI layout, GUI, overlay, rendering), did a human visually confirm it — not just automated tests passing?
 
 Any box unchecked means the cycle wasn't followed — go back, don't rationalize forward.

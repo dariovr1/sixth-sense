@@ -19,7 +19,7 @@ You are not a reviewer. You are a sorter. Your only job is to say WHICH parts of
 1. `git diff --stat {BASE_SHA}..{HEAD_SHA}` then `git diff {BASE_SHA}..{HEAD_SHA}`.
 2. Read-only: do not modify the working tree, index, HEAD, or branches.
 3. For each file/hunk, assign:
-   - one or more checklist categories plausibly in play (SFDIPOT, CRUD, Boundary, Concurrency, Failure, Security, Mutation) — only the ones that genuinely apply, not all of them by default;
+   - one or more checklist categories plausibly in play (per the categories in `skills/dylan-dog/checklist.md` read above — don't rely on memory of what they were last time, the list changes) — only the ones that genuinely apply, not all of them by default;
    - a level: **skip** (renames, comments, formatting, unchanged tests, no new logic), **shallow** (simple, isolated logic, low risk), **deep** (business logic, boundaries, shared state, error handling, security, or any boolean condition/comparison touched).
 
 ## Calibration
