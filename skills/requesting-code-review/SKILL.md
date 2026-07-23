@@ -40,6 +40,8 @@ HEAD_SHA=$(git rev-parse HEAD)
 Don't hardcode `main` — it silently breaks on repos whose default branch is `master` or anything else (`git merge-base` fails with no useful signal that the branch name was the problem).
 
 ### 3. Dispatch via Dylan Dog
+Before dispatching, check `.sixth-sense/learnings.jsonl` at the project root for entries relevant to the files in this diff — a documented pitfall on this exact class of code saves the hunter from rediscovering it from scratch. Skip silently if the file doesn't exist. If relevant entries exist, fold them into {PLAN_OR_REQUIREMENTS} so the hunter checks for them directly.
+
 Invoke the `dylan-dog` skill in Hunting mode with:
 - **{DESCRIPTION}:** Brief summary of what you built.
 - **{PLAN_OR_REQUIREMENTS}:** What the code should do.

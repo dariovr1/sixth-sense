@@ -146,6 +146,10 @@ const newSSFileGroups = [
   {
     name: 'Hooks',
     files: ['hooks/session-start.js', 'hooks/hooks.json']
+  },
+  {
+    name: 'External-target skills (prompt-craft, handing-off)',
+    files: ['skills/prompt-craft/SKILL.md', 'skills/prompt-craft/references/tool-profiles.md', 'skills/handing-off/SKILL.md']
   }
 ];
 

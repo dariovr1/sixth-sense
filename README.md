@@ -61,12 +61,14 @@ Counting only what always loads (each plugin's `SKILL.md` files; Sixth Sense als
 
 Measured directly from both repositories on 2026-07-17 (`wc -c` here, the GitHub API for `obra/superpowers`). This is a static file-size comparison, not a runtime or cost benchmark: it doesn't account for progressive disclosure (only a triggered skill's full body loads).
 
-### 2. Savings for equivalent coverage (apples-to-apples): -23%
+### 2. Savings for equivalent coverage (apples-to-apples): -7%
 
-Sixth Sense includes capabilities Superpowers doesn't have (per-stack routing, model/effort control, Dylan Dog). Running `node scripts/benchmark.js` yourself (data as of 2026-07-21), which nets out those extra capabilities and compares only the skills that do the same job:
-- Real net savings: 23%.
+Sixth Sense includes capabilities Superpowers doesn't have (per-stack routing, model/effort control, Dylan Dog, and two user/model-invoked skills — `prompt-craft`, `handing-off` — with no Superpowers counterpart). Running `node scripts/benchmark.js` yourself (data as of 2026-07-23), which nets out those extra capabilities and compares only the skills that do the same job:
+- Real net savings: 7%.
 
-Both this number and the 44% above are real and measured, not guessed — they just answer different questions. Read 44% as total footprint, 23% as apples-to-apples cost for comparable coverage.
+This number moves as either repo changes — re-run the script yourself rather than trusting a number frozen in this README. A prior version of this section reported 23% (2026-07-21); that number was itself measured with a `newSSFileGroups` list in `scripts/benchmark.js` that omitted `prompt-craft`/`handing-off` entirely, undercounting Sixth Sense's real weight, on top of Superpowers having changed slightly since. Both are now folded into the "External-target skills" line in the script's output.
+
+Both this number and the 44% above are real and measured, not guessed — they just answer different questions. Read 44% as total footprint, 7% as apples-to-apples cost for comparable coverage. Don't conflate them: the 44% figure only counts what always loads at startup (`SKILL.md` + agent tiers) — `prompt-craft`/`handing-off` are triggered on demand, not startup-loaded, so they don't move the 44% number, only the itemized one.
 
 ### 3. Result of a real test on a concrete task (Python bugfix)
 
@@ -85,7 +87,7 @@ A real task run through both frameworks: a Python module with no tests and a bug
 
 > **Not independently verified.** This specific test was run and reported by a separate claude.ai session (not this repository's own maintainers), shared 2026-07-19. The numbers and the process description above are exactly as reported — nobody on this side has re-run it or checked it against a raw transcript, the way the footprint and net-savings numbers above were. Treat it as a plausible, informative anecdote, not a confirmed benchmark.
 
-**In summary:** -44% is the startup footprint reduction (about 70KB vs about 125KB, measured). -23% is the apples-to-apples token savings for equivalent coverage (measured). -5% is the token savings observed on one small, reported bugfix task where the heavier skills never load (reported, not independently verified). On a task this small, the token-cost difference is minor either way — the more consequential difference is *when* the process catches an edge case (upfront vs. after commit), not the token count. Whether that gap widens on larger, more complex tasks hasn't been measured by anyone on this side — no claim is made about it here.
+**In summary:** -44% is the startup footprint reduction (about 70KB vs about 125KB, measured). -7% is the apples-to-apples token savings for equivalent coverage (measured, 2026-07-23). -5% is the token savings observed on one small, reported bugfix task where the heavier skills never load (reported, not independently verified). On a task this small, the token-cost difference is minor either way — the more consequential difference is *when* the process catches an edge case (upfront vs. after commit), not the token count. Whether that gap widens on larger, more complex tasks hasn't been measured by anyone on this side — no claim is made about it here.
 
 ## Before / after
 
@@ -123,7 +125,7 @@ This is a structural comparison, checked against `obra/superpowers` on 2026-07-1
 |---|---|---|
 | Skills | 14 | 17, plus 8 agent-tier definitions |
 | Core footprint (`SKILL.md` + agent tiers, measured) | about 125KB, about 31,300 tokens | about 70KB, about 17,600 tokens, roughly 44% smaller |
-| Net token savings on equivalent skills (itemized, `scripts/benchmark.js`, nets out Sixth Sense-only capabilities) | — | 23% net savings (measured 2026-07-21) |
+| Net token savings on equivalent skills (itemized, `scripts/benchmark.js`, nets out Sixth Sense-only capabilities) | — | 7% net savings (measured 2026-07-23) |
 | Subagent model/effort routing | None. Everything runs on whatever model the session itself is using | 8 tiers: `sonnet-low/medium/high/research`, `haiku-batch`, `dylan-dog-triage/hunter`, `opus-review` |
 | Stack-specific TDD conventions | One generic `SKILL.md`, no per-stack files | Java/Spring Boot, Angular, React/Next.js, and Python, each with its own reference file, routed by `crossroad-stack` |
 | Design-time stress-testing | `brainstorming`: open-ended exploration | `grilling` (an adversarial interview) plus Dylan Dog's Premortem mode, with decisions written to `CONTEXT.md`/ADRs |

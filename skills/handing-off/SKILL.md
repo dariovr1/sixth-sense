@@ -48,3 +48,5 @@ Overwrite on each invocation — a handoff is the *current* live thread, not a h
 
 ## Pairing With Other Skills
 Complements `synthesizing-spec` and `domain-modeling` rather than overlapping them: those skills produce durable, referenceable artifacts (specs, `CONTEXT.md`); this skill produces the ephemeral bridge between sessions, and points at those artifacts instead of re-deriving them.
+
+**vs. `prompt-craft`**: both produce a text handoff, but for different destinations. Use this skill when continuing *this same repo/work* in a fresh session — anchored to current state, references the actual artifacts touched. Use `prompt-craft` when the target is an external tool/model with no shared repo context.
