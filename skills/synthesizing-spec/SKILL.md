@@ -8,6 +8,9 @@ disable-model-invocation: true
 
 Synthesize the current conversation into a structured specification. Use the project's own domain vocabulary (reference `CONTEXT.md` if it exists).
 
+## Where It Goes
+Write the finished spec to `.sixth-sense/spec.md` at the project root, overwriting any previous version there — this is the spec currently being implemented against, not a history of past ones. This gives `implementing-work`'s Heavy Workflow a file to reference by path in subagent dispatch prompts instead of re-pasting the full spec text into every one, and gives `dylan-dog`/`opus-review` a fixed artifact to read directly instead of a manually reconstructed summary. Still show the spec in the conversation as usual — the file is an additional artifact, not a replacement for discussing it with the user.
+
 ## Template
 
 ### Problem Statement

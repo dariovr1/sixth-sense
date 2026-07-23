@@ -44,7 +44,7 @@ Before dispatching, check `.sixth-sense/learnings.jsonl` at the project root for
 
 Invoke the `dylan-dog` skill in Hunting mode with:
 - **{DESCRIPTION}:** Brief summary of what you built.
-- **{PLAN_OR_REQUIREMENTS}:** What the code should do.
+- **{PLAN_OR_REQUIREMENTS}:** What the code should do. Check `.sixth-sense/spec.md` at the project root first (written by `synthesizing-spec`) and use it if present, rather than reconstructing the requirements from memory.
 - **{BASE_SHA}:** The starting commit.
 - **{HEAD_SHA}:** The ending commit.
 
